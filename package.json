@@ -1,0 +1,13 @@
+{
+  "name": "aoc-2021",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "My Advent of Code 2021 solutions",
+  "scripts": {
+    "start": "node *.js"
+  },
+  "keywords": [],
+  "author": "Nils Riedemann",
+  "license": "ISC",
+  "dependencies": {}
+}
