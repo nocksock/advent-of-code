@@ -9,5 +9,8 @@
   "keywords": [],
   "author": "Nils Riedemann",
   "license": "ISC",
-  "dependencies": {}
+  "dependencies": {},
+  "prettier": {
+    "arrowParens": "avoid"
+  }
 }
