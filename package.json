@@ -4,7 +4,7 @@
   "type": "module",
   "description": "My Advent of Code 2021 solutions",
   "scripts": {
-    "start": "node *.js"
+    "start": "find . -regex '.*[0-9][0-9].js$' -exec node {} \\;"
   },
   "keywords": [],
   "author": "Nils Riedemann",
