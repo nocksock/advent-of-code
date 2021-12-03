@@ -1,5 +1,6 @@
 import { readFileSync } from "fs";
 import { pipe, map, sum, expect } from "./helpers.js";
+console.log(`\n-- DAY 01 --`)
 
 // -- Part A ---------------------------------------------------------------
 const inToArr = input => input.split("\n").map(i => parseInt(i, 10))
