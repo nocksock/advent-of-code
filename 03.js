@@ -1,12 +1,8 @@
 import {
   converge,
   countValues,
-  equals,
-  filter,
-  expect,
-  get, getMaxKeys,
-  getMinKeys, map, multiply, pipe, readFile,
-  splitChars, splitLines, tapLog, toBinary, transpose, tap, toJson, inspect, id, list, removeEmpty, curry, parseBinary, getKeysBy
+  equals, expect, filter, get, getKeysBy, getMaxKeys,
+  getMinKeys, id, map, multiply, parseBinary, pipe, readFile, removeEmpty, splitChars, splitLines, tapLog, toBinary, transpose
 } from "./helpers.js";
 const DAY = "03";
 
