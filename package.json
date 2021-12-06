@@ -9,7 +9,9 @@
   "keywords": [],
   "author": "Nils Riedemann",
   "license": "ISC",
-  "dependencies": {},
+  "dependencies": {
+    "ramda": "^0.27.1"
+  },
   "prettier": {
     "arrowParens": "avoid"
   }
