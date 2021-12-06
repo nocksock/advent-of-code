@@ -40,6 +40,7 @@ export const tapLog = prefix => (...args) => {
   console.log(prefix, toJson(args));
   return args[0]
 }
+export const log = console.log.bind(console)
 export const inspect = tapLog("\n\n-- inspect:\n")
 export const join = glue => arr => arr.join(glue)
 export const trim = s => s.trim()
