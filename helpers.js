@@ -103,3 +103,10 @@ export const expect = result => ({
       message
     )
 })
+export const expectEqual = (expectation, message) => result => {
+  test(
+    deepEquals(result, expectation),
+    `${message}\n\t${toJson(result)} is not Equal to ${toJson(expectation)}\n`,
+    message
+  );
+};
