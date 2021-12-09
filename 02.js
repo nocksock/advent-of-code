@@ -74,7 +74,7 @@ const parseInputPartB = pipe(
   map(splitWords),
   map(([cmd, value]) => [cmd, Number(value)]),
   parseCommandsWithAim,
-  apply( multiply )
+  apply(multiply)
 );
 
 const partB = fromFile(pipe(parseInputPartB, tapLog("Day 02, Part B:")));

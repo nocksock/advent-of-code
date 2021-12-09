@@ -29,7 +29,7 @@ readFile("./06.input").then(
 
 // -- TESTS ----------------------------------------------------------------
 expect(makePool(initial)).toEqual(
-  [0, 1, 1, 2, 1, 0, 0, 0],
+  [0, 1, 1, 2, 1, 0, 0, 0, 0],
   "makePool() works as intended"
 );
 expect(calculate(0, initial)).toEqual(5, "0 days ok ");

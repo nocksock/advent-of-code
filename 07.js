@@ -1,16 +1,12 @@
 import {
   apply,
-  head,
   identity,
   juxt,
-  last,
   map,
   memoizeWith,
   pipe,
   range,
-  sort,
   split,
-  subtract,
   sum,
   times,
   trim,
@@ -21,6 +17,8 @@ console.log("\n\n=== Day 07 ===\n");
 
 const parseFile = pipe(trim, split(","), map(Number));
 const factorial = memoizeWith(identity, n => sum(range(1, n + 1)));
+// yeah I know, that's not factorial, but it's quite similar. There's probably a
+// name for this too, which I don't know.
 
 // this could probably be composed more elegantly
 const calculateWith = fn => input =>
