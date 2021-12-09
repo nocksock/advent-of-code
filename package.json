@@ -15,5 +15,8 @@
   },
   "prettier": {
     "arrowParens": "avoid"
+  },
+  "devDependencies": {
+    "jest-diff": "^27.4.2"
   }
 }
