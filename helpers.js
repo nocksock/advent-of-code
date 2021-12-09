@@ -4,8 +4,7 @@ import { diff } from "jest-diff";
 import * as R from "ramda";
 
 // 😈 I always forget to confirm the auto-import
-export const injectRamda = () =>
-  Object.entries(R).forEach(([fnName, fn]) => (global[fnName] = fn));
+export const injectRamda = () => Object.assign(global, R);
 
 export const pipe =
   (...fns) =>
