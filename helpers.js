@@ -6,7 +6,7 @@ import * as R from "ramda";
 // 😈
 // I always forget to confirm the auto-import. Making my life easier for AOC.
 // Don't do this in prod.
-export const injectRamda = (g = global) => Object.assign(global, R);
+export const injectRamda = (g = global) => Object.assign(g, R);
 
 export function setup(day) {
   Object.assign(global, this);
