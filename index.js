@@ -12,13 +12,18 @@ const run = file => {
   console.log(header(`RUNNING ${file}`));
   console.time(label(file));
 
+  let stdio = [];
+
   try {
-    console.log(
-      execSync(`node ${file}`, {
-        encoding: "utf-8",
-      })
-    );
-  } catch (err) {}
+    stdio.push(execSync(`node ${file}`, {
+      encoding: "utf-8",
+      stdio
+    }))
+  } catch (err) {
+    stdio.push(err)
+  }
+
+  console.log(stdio.join("\n"))
 
   console.timeEnd(label(file));
 };
