@@ -1,84 +1,75 @@
-import {
-  expect,
-  fromFile,
-  map,
-  multiply,
-  apply,
-  pipe,
-  removeEmpty,
-  splitLines,
-  splitWords,
-  tapLog,
-} from "./helpers.js";
-console.log(`\n-- DAY 02 --`);
+import * as aoc from "./helpers.js"
+aoc.setup()
 
-// -- PART 1 ---------------------------------------------------------------
-const sample = `forward 5
-down 5
-forward 8
-up 3
-down 8
-forward 2
-`;
+// --- IMPLEMENTATIONS ----------------------------------------------------------------------
+
+const parseFile = pipe(
+  trim,
+  split("\n"),
+  map(split(" ")),
+  map(([cmd, value]) => [cmd, Number(value)])
+)
 
 const parseCommands = commands =>
   commands.reduce(
     ([x, y], [cmd, value]) => {
       switch (cmd) {
         case "forward":
-          return [x + value, y];
+          return [x + value, y]
         case "up":
-          return [x, y - value];
+          return [x, y - value]
         case "down":
-          return [x, y + value];
+          return [x, y + value]
       }
     },
     [0, 0]
-  );
+  )
 
-const parseInput = pipe(
-  splitLines,
-  removeEmpty,
-  map(splitWords),
-  map(([cmd, value]) => [cmd, Number(value)]),
-  parseCommands
-);
-
-expect(parseInput(sample)).toEqual([15, 10], "Day 02, Part 1: Sample is ok");
-
-const parseFile = fromFile(
-  pipe(parseInput, apply(multiply), tapLog("Day 02, Part A:"))
-);
-
-parseFile("./02.input");
-
-// -- PART TWO--------------------------------------------------------------
 const parseCommandsWithAim = commands =>
   commands.reduce(
     ([x, y, aim], [cmd, units]) => {
       switch (cmd) {
         case "down":
-          return [x, y, aim + units];
+          return [x, y, aim + units]
         case "up":
-          return [x, y, aim - units];
+          return [x, y, aim - units]
         case "forward":
-          return [x + units, y + aim * units, aim];
+          return [x + units, y + aim * units, aim]
       }
     },
     [0, 0, 0]
-  );
+  )
 
-const parseInputPartB = pipe(
-  splitLines,
-  removeEmpty,
-  map(splitWords),
-  map(([cmd, value]) => [cmd, Number(value)]),
-  parseCommandsWithAim,
-  apply(multiply)
-);
+// --- RUNNING ----------------------------------------------------------------------
 
-const partB = fromFile(pipe(parseInputPartB, tapLog("Day 02, Part B:")));
+readFile("02.sample")
+  .then(parseFile)
+  .then(
+    juxt([
+      pipe(
+        parseCommands,
+        product,
+        tap(expectEqual(150, "Part 1, sample: ok"))
+      ),
+      pipe(
+        parseCommandsWithAim,
+        slice(0, 2),
+        product,
+        tap(expectEqual(900, "Part 2, sample: ok"))
+      ),
+    ])
+  )
 
-expect(parseInputPartB(sample)).toEqual(900, "Day 02, Part 2: Sample is ok");
-
-partB("./02.input");
+readFile("02.input")
+  .then(parseFile)
+  .then(
+    juxt([
+      pipe(parseCommands, product, tap(log("Part 1, result"))),
+      pipe(
+        parseCommandsWithAim,
+        slice(0, 2),
+        product,
+        tap(log("Part 2, result:"))
+      ),
+    ])
+  )
