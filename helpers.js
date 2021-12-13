@@ -76,7 +76,8 @@ export const tapLog =
   (...args) => {
     if (args.length > 1)
       console.warn("Note: tapLog has been called with more than 1 argument");
-    console.log(prefix, ...args);
+    console.log(prefix);
+    console.log(...args);
     return args[0];
   };
 export const log = m => console.log.bind(console, m);
