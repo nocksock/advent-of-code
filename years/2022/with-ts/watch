@@ -1,2 +1,2 @@
 #!/usr/bin/env sh
-nodemon -w $1 -x "ts-node $1"
+nodemon -e ts  -w "./*.ts" -x "ts-node $1"
