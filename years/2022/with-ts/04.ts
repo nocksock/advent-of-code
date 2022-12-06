@@ -15,7 +15,9 @@ const intersects = ([aMin, aMax]: Pair, [bMin, bMax]: Pair) =>
 const isWithin = (a: Pair, b: Pair) => contained(a, b) || contained(b, a);
 
 const isOverlapping = (a: Pair, b: Pair) =>
-  isWithin(a, b) || intersects(b, a);
+  isWithin(a, b) || intersects(a, b) || intersects(b, a);
+
+
 
 readFile("./04.input", "utf8")
   .then(pipe(trim, split("\n")))
