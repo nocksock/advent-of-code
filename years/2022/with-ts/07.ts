@@ -5,12 +5,19 @@ const input = await readFile("../07.input", "utf8").then((f) => f.split("\n"));
 
 const dirSizes = input.reduce(
   ({ fs, cwd }, line) => {
+    // just skip those
     if (["$ ls", "dir"].some((v) => line.startsWith(v))) return { fs, cwd };
 
     if (line.startsWith("$ cd")) {
       const arg = /\$ cd (.*)/.exec(line)![1];
       if (arg === "/") return { fs, cwd: [] };
-      return { fs, cwd: arg === ".." ? cwd.slice(0, -1) : [...cwd, arg] };
+
+      return {
+        fs,
+        cwd: arg === ".."
+          ? cwd.slice(0, -1)
+          : [...cwd, arg]
+      };
     }
 
     const size = Number(line.split(" ")[0]);
@@ -28,11 +35,11 @@ const dirSizes = input.reduce(
 
 const sizes = Object.values(dirSizes);
 
-console.log("A:", sizes.filter(gt(100000)).reduce(add));
+console.log("A:", sizes.filter(gt(100_000)).reduce(add));
 
 // part B
-const needed = 30000000;
-const max = 70000000;
+const needed = 30_000_000;
+const max = 70_000_000;
 const unused = max - dirSizes?.["/"];
 
 console.log(
