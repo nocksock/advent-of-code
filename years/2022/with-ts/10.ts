@@ -31,5 +31,7 @@ const lookAt = [20, 60, 100, 140, 180, 220];
 
 console.log(
   "A",
-  sum(lookAt.map((cycles) => peek(cycles)(values) * cycles, []))
+  sum(
+    lookAt.map((cycles) => peek(cycles)(values) * cycles, [])
+  )
 );

@@ -22,16 +22,24 @@ export const tee =
 
 export const teeLog = tee(console.log);
 
-const obs = new PerformanceObserver((list) => {
-  list
-    .getEntries()
-    .map((entry) => console.log(`${entry.name}: ${entry.duration}`));
+// const obs = new PerformanceObserver((list) => {
+//   list
+//     .getEntries()
+//     .map((entry) => console.log(`${entry.name}: ${entry.duration}`));
+//
+//   performance.clearMarks();
+//   performance.clearMeasures();
+//   obs.disconnect();
+// });
+// obs.observe({ entryTypes: ["function"] });
 
-  performance.clearMarks();
-  performance.clearMeasures();
-  obs.disconnect();
-});
-obs.observe({ entryTypes: ["function"] });
+// export const measure = <T, R>(
+//   label: string,
+//   count: number,
+//   fn: (input: T) => R
+// ) => {
+//   return performance.timerify();
+// };
 
 export const asAsync =
   <F extends Fn, R>(fn: F) =>
