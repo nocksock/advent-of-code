@@ -16,6 +16,13 @@ fn main() {
     let matches = api.get_matches();
 
     match matches.subcommand() {
+        Some(("1", sub)) =>  {
+            if sub.get_flag("part b") {
+                println!("{:?}", day01::solve(utils::read_input("01.input"), false));
+            } else {
+                println!("{:?}", day01::solve(utils::read_input("01.input"), true));
+            }
+        },
         _ => println!("{}", usage),
     }
 }
