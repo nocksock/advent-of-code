@@ -1,11 +1,11 @@
-fn extract(input: String, strict: bool) -> u32 {
+fn extract(input: String, part_b: bool) -> u32 {
     let digits: Vec<u32> = input
         .chars()
         .enumerate()
         .filter_map(|(i, c)| match c.is_digit(10) {
             true => Some(c.to_digit(10).unwrap()),
             _ => {
-                if !strict {
+                if part_b {
                     input.get(i..input.len()).and_then(|s| {
                         if s.starts_with("one") {
                             Some(1)
@@ -42,8 +42,8 @@ fn extract(input: String, strict: bool) -> u32 {
     return a * 10 + b;
 }
 
-pub fn solve(input: Vec<String>, strict: bool) -> u32 {
-    let digits = input.iter().map(|line| extract(line.to_string(), strict)).collect();
+pub fn solve(input: Vec<String>, part_b: bool) -> u32 {
+    let digits = input.iter().map(|line| extract(line.to_string(), part_b)).collect();
 
     sum(digits)
 }
