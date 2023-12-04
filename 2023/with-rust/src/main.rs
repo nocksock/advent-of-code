@@ -1,6 +1,7 @@
 use clap::{Arg, Command};
 mod day01;
 mod day02;
+mod day03;
 mod utils;
 
 fn cli() -> Command {
@@ -20,6 +21,7 @@ fn main() {
     match day {
         1 => println!("{:?}", day01::solve(utils::read_input("01.input"), matches.get_flag("part-b"))),
         2 => println!("{:?}", day02::solve(utils::read_input("02.input"), matches.get_flag("part-b"))),
+        3 => println!("{:?}", day03::solve(utils::read_input("03.input"), matches.get_flag("part-b"))),
         _ => println!("{}", usage),
     }
 }
