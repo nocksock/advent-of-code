@@ -1,0 +1,15 @@
+#!/usr/bin/env zsh
+
+if [[ $1 == "test" ]] {
+  shift;
+  export RUST_BACKTRACE=1
+  fd | entr -rc cargo test --bin $1 -- --nocapture
+  exit 0
+}
+
+if [[ ! -n $1 ]] {
+  fd | entr -rc cargo --bin $1
+  exit 0
+}
+
+echo "example usage: ./run [test] day01"
