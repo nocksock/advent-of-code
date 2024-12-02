@@ -1,3 +1,5 @@
+use itertools::Itertools;
+
 fn part_a(input: &str) -> i32 {
     let mut input = input
         .lines()
@@ -20,17 +22,41 @@ fn part_a(input: &str) -> i32 {
         .unwrap();
 }
 
+fn part_b(input: &str) -> usize {
+    let (left, right): (Vec<_>, Vec<_>) = input
+        .lines()
+        .map(|line| {
+            line.split_once("   ")
+                .map(|(a, b)| (a.parse::<usize>().unwrap(), b.parse::<usize>().unwrap()))
+                .unwrap()
+        })
+        .unzip();
+
+    let counts = right.into_iter().counts();
+
+    left.into_iter()
+        .map(|n| n * counts.get(&n).unwrap_or(&0))
+        .sum()
+}
+
 fn main() {
-    let result = part_a(include_str!("../../../01.input"));
-    println!("{:?}", result);
+    println!("a: {:?}", part_a(include_str!("../../../01.input")));
+    println!("b: {:?}", part_b(include_str!("../../../01.input")));
 }
 
 #[cfg(test)]
 mod test {
-    use crate::part_a;
+    use crate::*;
+
     #[test]
-    fn test_parse() {
+    fn test_part_a_sample() {
         let result = part_a(include_str!("../../../01.sample"));
         assert_eq!(result, 11);
+    }
+
+    #[test]
+    fn test_part_b_sample() {
+        let result = part_b(include_str!("../../../01.sample"));
+        assert_eq!(result, 31);
     }
 }
