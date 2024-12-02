@@ -3,6 +3,7 @@ mod day01;
 mod day02;
 mod day03;
 mod day04;
+mod day05;
 mod utils;
 
 fn cli() -> Command {
@@ -24,6 +25,7 @@ fn main() {
         2 => println!("{:?}", day02::solve(utils::read_input("02.input"), matches.get_flag("part-b"))),
         3 => println!("{:?}", day03::solve(utils::read_input("03.input"), matches.get_flag("part-b"))),
         4 => println!("{:?}", day04::solve(utils::read_input("04.input"), matches.get_flag("part-b"))),
+        5 => println!("{:?}", day05::solve(utils::read_input("05.input"), matches.get_flag("part-b"))),
         _ => println!("{}", usage),
     }
 }

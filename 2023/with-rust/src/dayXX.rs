@@ -1,21 +1,24 @@
 pub fn solve(lines: Vec<String>, part_b: bool) -> u32 {
+
     // do the thing
+
+    0
 }
 
 #[cfg(test)]
 mod test {
-    use crate::dayXX::{extract, solve};
-    use aoc::utils::*;
+    use crate::dayXX::*;
+    use crate::utils::*;
 
     // #[test]
-    // fn test_sample_a() {
+    // fn test_dayXX_a() {
     //     let sample = read_input("XX.sample");
-    //     assert_eq!(142, solve(sample, false));
+    //     assert_eq!(??, solve(sample, false));
     // }
 
     // #[test]
-    // fn test_sample_b() {
+    // fn test_dayXX_b() {
     //     let sample = read_input("XX.sample");
-    //     assert_eq!(142, solve(sample, true));
+    //     assert_eq!(??, solve(sample, true));
     // }
 }

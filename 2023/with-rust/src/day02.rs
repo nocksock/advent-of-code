@@ -75,7 +75,7 @@ pub fn solve(input: Vec<String>, part_b: bool) -> usize {
 #[cfg(test)]
 mod test {
     use crate::day02::*;
-    use aoc::utils::*;
+    use crate::utils::*;
 
     #[test]
     fn test_sample_a() {
